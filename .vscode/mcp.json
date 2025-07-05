@@ -1,0 +1,11 @@
+{
+    "servers": {
+        "ffmpeg-mcp-server": {
+            "command": "node",
+            "args": ["/Users/demilp/repos/ffmpeg-mcp/build/index.js"],
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    }
+}

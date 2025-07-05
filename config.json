@@ -1,0 +1,35 @@
+{
+  "security": {
+    "maxFileSize": 5368709120,
+    "maxProcessingTime": 3600,
+    "rateLimitWindow": 60,
+    "rateLimitMaxRequests": 10,
+    "allowedDirectories": ["/tmp", "/var/tmp", "/Users/demilp/repos/ffmpeg-mcp"],
+    "blockedExtensions": [".exe", ".bat", ".sh", ".ps1"],
+    "tempDirectory": "/tmp/ffmpeg-mcp"
+  },
+  "performance": {
+    "enableCaching": true,
+    "cacheSize": 1000,
+    "enableHardwareAcceleration": false,
+    "maxConcurrentJobs": 3,
+    "queueTimeout": 300000
+  },
+  "logging": {
+    "level": "debug",
+    "enableFileLogging": true,
+    "logDirectory": "./logs",
+    "maxLogSize": 10485760
+  },
+  "ffmpeg": {
+    "path": "ffmpeg",
+    "timeout": 3600000,
+    "defaultPreset": "medium",
+    "enableGPU": false,
+    "hwAccelOptions": {
+      "nvidia": ["-hwaccel", "cuda", "-hwaccel_output_format", "cuda"],
+      "intel": ["-hwaccel", "qsv", "-hwaccel_output_format", "qsv"],
+      "amd": ["-hwaccel", "opencl"]
+    }
+  }
+}

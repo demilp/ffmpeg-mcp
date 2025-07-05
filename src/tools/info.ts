@@ -13,7 +13,7 @@ export class MediaInfoTool {
   constructor(ffmpeg?: FFmpegExecutor, cache?: CacheManager, logger?: Logger) {
     // Use provided FFmpegExecutor or create a simple one
     this.ffmpeg = ffmpeg || new FFmpegExecutor(
-      { path: 'ffmpeg', enableGPU: false, timeout: 300000, defaultPreset: 'medium', hwAccelOptions: { nvidia: [], intel: [], amd: [] } },
+      { path: 'ffmpeg', enableGPU: true, timeout: 300000, defaultPreset: 'medium', hwAccelOptions: { nvidia: ['-hwaccel', 'cuda', '-hwaccel_output_format', 'cuda'], intel: ['-hwaccel', 'qsv', '-hwaccel_output_format', 'qsv'], amd: ['-hwaccel', 'opencl'] } },
       logger || new Logger({ level: 'info', enableFileLogging: false, logDirectory: '/tmp/logs', maxLogSize: 10485760 }),
       // We'll create a minimal security manager for the default case
       new (class {

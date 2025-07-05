@@ -30,6 +30,8 @@ export interface ServerConfig {
       nvidia: string[];
       intel: string[];
       amd: string[];
+      apple: string[];
+      macos: string[];
     };
   };
 }
@@ -47,7 +49,7 @@ export const defaultConfig: ServerConfig = {
   performance: {
     enableCaching: true,
     cacheSize: 1000,
-    enableHardwareAcceleration: false,
+    enableHardwareAcceleration: true,
     maxConcurrentJobs: 3,
     queueTimeout: 300000 // 5 minutes
   },
@@ -65,7 +67,9 @@ export const defaultConfig: ServerConfig = {
     hwAccelOptions: {
       nvidia: ['-hwaccel', 'cuda', '-hwaccel_output_format', 'cuda'],
       intel: ['-hwaccel', 'qsv', '-hwaccel_output_format', 'qsv'],
-      amd: ['-hwaccel', 'opencl']
+      amd: ['-hwaccel', 'opencl'],
+      apple: ['-hwaccel', 'videotoolbox'],
+      macos: ['-hwaccel', 'videotoolbox']
     }
   }
 };
